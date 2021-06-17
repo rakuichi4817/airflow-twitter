@@ -1,0 +1,7 @@
+airflow/logs
+airflow/airflow*
+airflow/webserver_config.py
+airflow/user_keys/*
+
+.vscode
+__pycache__
