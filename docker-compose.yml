@@ -1,7 +1,8 @@
 version: "3"
 x-airflow-common: &airflow-common
   build: .
-  TZ: Asia/Tokyo
+  environment:
+    TZ: Asia/Tokyo
   volumes:
     - ./airflow:/opt/airflow
 
