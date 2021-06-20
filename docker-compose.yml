@@ -1,6 +1,5 @@
-version: '3'
-x-airflow-common:
-  &airflow-common
+version: "3"
+x-airflow-common: &airflow-common
   build: .
   volumes:
     - ./airflow:/opt/airflow
@@ -14,19 +13,18 @@ services:
       - 8080:8080
     restart: always
     working_dir: /opt/airflow
-    
+
   airflow-scheduler:
     <<: *airflow-common
     container_name: airflow-scheduler
     command: scheduler
     restart: always
 
-
   airflow-init:
     <<: *airflow-common
     command: version
     environment:
-      _AIRFLOW_DB_UPGRADE: 'true'
-      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_DB_UPGRADE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
