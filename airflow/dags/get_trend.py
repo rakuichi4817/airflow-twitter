@@ -38,7 +38,8 @@ def task_flow():
         conn, cur = get_db()
 
         # トレンド情報の挿入
-        cur.executemany("INSERT INTO trends VALUES (?, ?, ?, ?, ?)", insert_record_lst)
+        cur.executemany(
+            "INSERT INTO trends (get_at, rank, name, tweet_volume, url) VALUES (?, ?, ?, ?, ?)", insert_record_lst)
         conn.commit()
         
     result = get_trends()
